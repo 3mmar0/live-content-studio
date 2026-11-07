@@ -186,6 +186,13 @@ export function resolveContent<T extends SectionContent>(
     }
   }
 
+  for (const field of def.fields) {
+    const list = out[field.name];
+    if (field.type === "list" && Array.isArray(list)) {
+      out[field.name] = list.map((item, i) => (item._id ? item : { ...item, _id: `d${i}` }));
+    }
+  }
+
   return mapStrings(out, decodeAsset) as T;
 }
 
