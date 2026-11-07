@@ -599,8 +599,8 @@ function CourseSheet({
   const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) => setForm((f) => ({ ...f, [k]: v }));
 
   const save = async () => {
-    if (!form.title.trim()) return toast.error("اسم الدورة مطلوب");
-    if (!form.specialtyId) return toast.error("اختر التخصص");
+    if (!form.title.trim()) { toast.error("اسم الدورة مطلوب"); return; }
+    if (!form.specialtyId) { toast.error("اختر التخصص"); return; }
     const finalSlug = slug.slug || makeSlug(form.title) || `course-${Date.now().toString(36)}`;
     const payload = {
       title: form.title.trim(),
@@ -815,7 +815,7 @@ function CategoryDialog({ category, onClose, onSaved }: { category: AdminCategor
   const [saving, setSaving] = useState(false);
 
   const save = async () => {
-    if (!form.title.trim()) return toast.error("اسم التصنيف مطلوب");
+    if (!form.title.trim()) { toast.error("اسم التصنيف مطلوب"); return; }
     const data = { ...form, title: form.title.trim(), image: form.image || null, slug: slug.slug || makeSlug(form.title) || `category-${Date.now().toString(36)}` };
     setSaving(true);
     try {
@@ -883,7 +883,7 @@ function SpecialtyDialog({
   const [saving, setSaving] = useState(false);
 
   const save = async () => {
-    if (!form.title.trim()) return toast.error("اسم التخصص مطلوب");
+    if (!form.title.trim()) { toast.error("اسم التخصص مطلوب"); return; }
     const data = { ...form, title: form.title.trim(), image: form.image || null, slug: slug.slug || makeSlug(form.title) || `specialty-${Date.now().toString(36)}` };
     setSaving(true);
     try {
