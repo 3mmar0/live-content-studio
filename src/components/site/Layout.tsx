@@ -251,7 +251,7 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
   return <span ref={ref} className="font-display text-4xl font-bold text-gold md:text-5xl">{v.toLocaleString("ar-EG")}{suffix}</span>;
 }
 
-export function ExpertCard({ name, role, bio, note, image }: { name: string; role: string; bio: string; note?: string; image?: string }) {
+export function ExpertCard({ name, role, bio, note, image }: { name: string; role: string; bio: string; note?: string | undefined; image?: string | undefined }) {
   const initials = name.replace(/^(د\.|م\.)\s*/, "").split(" ").map((w) => w[0]).slice(0, 2).join(" ");
   return (
     <div className="group card-fx reveal rounded-2xl border bg-card p-6 shadow-soft">
