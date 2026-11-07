@@ -23,6 +23,12 @@ function token() {
   return typeof window === "undefined" ? null : sessionStorage.getItem(TOKEN_KEY);
 }
 
+export class ApiError extends Error {
+  constructor(message: string, public status: number) {
+    super(message);
+  }
+}
+
 export async function adminApi<T>(path: string, init: RequestInit = {}): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {
     ...init,
@@ -34,8 +40,9 @@ export async function adminApi<T>(path: string, init: RequestInit = {}): Promise
     },
   });
   if (!response.ok) {
-    const payload = (await response.json().catch(() => null)) as { message?: string } | null;
-    throw new Error(payload?.message || "تعذر الاتصال بلوحة المحتوى.");
+    const payload = (await response.json().catch(() => null)) as { message?: string; errors?: Record<string, string[]> } | null;
+    const firstError = payload?.errors ? Object.values(payload.errors)[0]?.[0] : undefined;
+    throw new ApiError(firstError || payload?.message || "تعذر الاتصال بالخادم.", response.status);
   }
   return response.status === 204 ? (undefined as T) : (response.json() as Promise<T>);
 }
@@ -110,4 +117,47 @@ export function exportCmsJson(store: CmsStore) {
   a.download = `solala-cms-${new Date().toISOString().slice(0, 10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+export type PageContentPayload = {
+  slug: string;
+  title: string;
+  sections: { key: string; label: string; visible: boolean; position: number; content: Record<string, unknown> }[];
+};
+
+/**
+ * Save every section of a page in one request.
+ * Falls back to the older per-section endpoint (only for sections that already exist on the
+ * server) when the server hasn't been updated with the bulk endpoint yet.
+ */
+export async function savePageContent(
+  payload: PageContentPayload,
+  existing: CmsStore["sections"],
+): Promise<{ mode: "bulk" | "legacy"; skipped: string[] }> {
+  try {
+    await adminApi("/admin/page-content", { method: "PUT", body: JSON.stringify(payload) });
+    return { mode: "bulk", skipped: [] };
+  } catch (error) {
+    if (!(error instanceof ApiError) || (error.status !== 404 && error.status !== 405)) throw error;
+  }
+  const skipped: string[] = [];
+  for (const section of payload.sections) {
+    const row = existing.find((s) => s.key === section.key && typeof s.id === "number");
+    if (!row) {
+      skipped.push(section.label);
+      continue;
+    }
+    await adminApi(`/admin/sections/${row.id}`, {
+      method: "PUT",
+      body: JSON.stringify({ visible: section.visible, content: section.content }),
+    });
+  }
+  return { mode: "legacy", skipped };
+}
+
+export async function uploadMedia(file: File): Promise<string> {
+  const form = new FormData();
+  form.append("file", file);
+  const media = await adminApi<{ url: string }>("/admin/media", { method: "POST", body: form });
+  return media.url;
 }
