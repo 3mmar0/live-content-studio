@@ -16,7 +16,7 @@ export const aboutHero = section("hero", {
 
 export const aboutVision = section("vision", {
  label: "الرؤية والرسالة",
- fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.text("text2", "text2"), f.textarea("text3", "text3"), f.text("text4", "text4"), f.textarea("text5", "text5"), f.text("imageAlt", "imageAlt"), f.image("image", "الصورة")],
+ fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.text("text2", "text2"), f.textarea("text3", "text3"), f.text("text4", "text4"), f.textarea("text5", "text5"), f.text("imageAlt", "وصف الصورة"), f.image("image", "الصورة")],
  defaults: {
   "eyebrow": "طموحنا ورسالتنا",
   "title": "رؤيتنا ورسالتنا في Solala",
@@ -31,7 +31,7 @@ export const aboutVision = section("vision", {
 
 export const aboutValues = section("values", {
  label: "قيمنا العليا",
- fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("values", "قيمنا العليا", "عنصر", [f.icon("icon", "icon"), f.text("t", "t"), f.textarea("d", "d")]), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("values", "قيمنا العليا", "عنصر", [f.icon("icon", "الأيقونة"), f.text("t", "العنوان"), f.textarea("d", "الوصف")]), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
  "backgroundImage": "/shapes/wavy.svg",
   "values": [
@@ -58,7 +58,7 @@ export const aboutValues = section("values", {
 
 export const aboutTeam = section("team", {
  label: "فريق العمل",
- fields: [f.list("team", "فريق العمل", "عنصر", [f.text("name", "name"), f.text("role", "role"), f.textarea("bio", "bio"), f.image("image", "image"), f.text("note", "note")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.list("team", "فريق العمل", "عنصر", [f.text("name", "الاسم"), f.text("role", "المسمى"), f.textarea("bio", "نبذة"), f.image("image", "الصورة"), f.text("note", "ملاحظة")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
   "team": [
     {

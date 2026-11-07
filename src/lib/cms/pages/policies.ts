@@ -15,7 +15,7 @@ export const policiesHero = section("hero", {
 
 export const policiesPolicies = section("policies", {
  label: "السياسات",
- fields: [f.list("sections", "السياسات", "عنصر", [f.text("t", "t"), f.textarea("body", "body")])],
+ fields: [f.list("sections", "السياسات", "عنصر", [f.text("t", "العنوان"), f.textarea("body", "النص")])],
  defaults: {
   "sections": [
     {

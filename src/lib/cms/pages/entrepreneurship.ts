@@ -15,7 +15,7 @@ export const entrepreneurshipHero = section("hero", {
 
 export const entrepreneurshipStages = section("stages", {
  label: "مراحل الرحلة الريادية",
- fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("stages", "مراحل الرحلة الريادية", "عنصر", [f.icon("icon", "icon"), f.text("t", "t"), f.textarea("d", "d"), f.textarea("features", "features")]), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("stages", "مراحل الرحلة الريادية", "عنصر", [f.icon("icon", "الأيقونة"), f.text("t", "العنوان"), f.textarea("d", "الوصف"), f.textarea("features", "المميزات")]), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
  "backgroundImage": "/shapes/wavy.svg",
   "stages": [

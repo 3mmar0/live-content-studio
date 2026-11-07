@@ -15,7 +15,7 @@ export const faqHero = section("hero", {
 
 export const faqQuestions = section("questions", {
  label: "الأسئلة والإجابات",
- fields: [f.list("qs", "الأسئلة والإجابات", "عنصر", [f.text("q", "q"), f.textarea("a", "a")])],
+ fields: [f.list("qs", "الأسئلة والإجابات", "عنصر", [f.text("q", "السؤال"), f.textarea("a", "الإجابة")])],
  defaults: {
   "qs": [
     {

@@ -3,7 +3,7 @@ import heroImg from "@/assets/h-library.jpg";
 
 export const libraryHero = section("hero", {
  label: "الواجهة الرئيسية",
- fields: [f.list("items", "الواجهة الرئيسية", "عنصر", [f.text("t", "t"), f.textarea("d", "d"), f.text("k", "k"), f.text("c", "c")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("subtitle", "النص التعريفي"), f.image("image", "الصورة")],
+ fields: [f.list("items", "الواجهة الرئيسية", "عنصر", [f.text("t", "العنوان"), f.textarea("d", "الوصف"), f.text("k", "العنوان"), f.text("c", "الفئة")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("subtitle", "النص التعريفي"), f.image("image", "الصورة")],
  defaults: {
   "items": [
     {
@@ -53,7 +53,7 @@ export const libraryHero = section("hero", {
 
 export const libraryResources = section("resources", {
  label: "محتوى المكتبة",
- fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("items", "محتوى المكتبة", "عنصر", [f.text("t", "t"), f.textarea("d", "d"), f.text("k", "k"), f.text("c", "c")]), f.text("title", "العنوان"), f.text("text2", "text2"), f.text("allLabel", "allLabel"), f.text("bookLabel", "bookLabel"), f.text("guideLabel", "guideLabel"), f.text("videoLabel", "videoLabel")],
+ fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("items", "محتوى المكتبة", "عنصر", [f.text("t", "العنوان"), f.textarea("d", "الوصف"), f.text("k", "العنوان"), f.text("c", "الفئة")]), f.text("title", "العنوان"), f.text("text2", "text2"), f.text("allLabel", "نص «الكل»"), f.text("bookLabel", "نص زر الكتاب"), f.text("guideLabel", "نص زر الدليل"), f.text("videoLabel", "نص زر الفيديو")],
  defaults: {
  "backgroundImage": "/shapes/floats.svg",
   "items": [

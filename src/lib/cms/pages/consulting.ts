@@ -17,7 +17,7 @@ export const consultingHero = section("hero", {
 
 export const consultingAudience = section("audience", {
  label: "مسارات الدعم الاستشاري",
- fields: [f.list("audience", "مسارات الدعم الاستشاري", "عنصر", [f.icon("icon", "icon"), f.text("e", "e"), f.text("t", "t"), f.textarea("d", "d"), f.text("c", "c"), f.url("href", "href")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.list("audience", "مسارات الدعم الاستشاري", "عنصر", [f.icon("icon", "الأيقونة"), f.text("e", "العنوان الصغير"), f.text("t", "العنوان"), f.textarea("d", "الوصف"), f.text("c", "الفئة"), f.url("href", "الرابط")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
   "audience": [
     {
@@ -45,7 +45,7 @@ export const consultingAudience = section("audience", {
 
 export const consultingExperts = section("experts", {
  label: "كبار الاستشاريين",
- fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("experts", "كبار الاستشاريين", "عنصر", [f.text("name", "name"), f.text("role", "role"), f.textarea("bio", "bio"), f.text("note", "note"), f.image("image", "image")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("experts", "كبار الاستشاريين", "عنصر", [f.text("name", "الاسم"), f.text("role", "المسمى"), f.textarea("bio", "نبذة"), f.text("note", "ملاحظة"), f.image("image", "الصورة")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
  "backgroundImage": "/shapes/floats.svg",
   "experts": [
@@ -79,7 +79,7 @@ export const consultingExperts = section("experts", {
 
 export const consultingSteps = section("steps", {
  label: "خطوات الاستشارة",
- fields: [f.list("steps", "خطوات الاستشارة", "عنصر", [f.text("t", "t"), f.textarea("d", "d"), f.text("number", "number")]), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.list("steps", "خطوات الاستشارة", "عنصر", [f.text("t", "العنوان"), f.textarea("d", "الوصف"), f.text("number", "الرقم")]), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
   "steps": [
     {
@@ -110,7 +110,7 @@ export const consultingSteps = section("steps", {
 
 export const consultingClients = section("clients", {
  label: "عملاؤنا",
- fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("clients", "عملاؤنا", "عنصر", [f.text("t", "t"), f.textarea("d", "d")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
+ fields: [f.image("backgroundImage", "صورة الخلفية الزخرفية"), f.list("clients", "عملاؤنا", "عنصر", [f.text("t", "العنوان"), f.textarea("d", "الوصف")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("body", "الوصف")],
  defaults: {
  "backgroundImage": "/shapes/wavy.svg",
   "clients": [
