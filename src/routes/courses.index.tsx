@@ -26,11 +26,8 @@ function Courses() {
   return (
     <PageSections
       page={coursesPage}
-      components={{
-        hero: () => <Hero q={q} setQ={setQ} />,
-        catalog: () => <Catalog q={q} />,
-        customTraining: CustomTraining,
-      }}
+      components={{ customTraining: CustomTraining }}
+      elements={{ hero: <Hero q={q} setQ={setQ} />, catalog: <Catalog q={q} /> }}
     />
   );
 }

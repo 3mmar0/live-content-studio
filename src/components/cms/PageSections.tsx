@@ -10,10 +10,13 @@ import { useSectionStates } from "@/lib/cms/use-section";
  */
 export function PageSections({
   page,
-  components,
+  components = {},
+  elements = {},
 }: {
   page: PageDef;
-  components: Record<string, ComponentType>;
+  components?: Record<string, ComponentType>;
+  /** Pre-built elements for sections that need props from the page (e.g. shared state). */
+  elements?: Record<string, ReactNode>;
 }) {
   const states = useSectionStates(page);
   const previewMode = useCmsOptional()?.previewMode ?? false;
@@ -22,11 +25,12 @@ export function PageSections({
     <>
       {states.map(({ def, visible }) => {
         const Component = components[def.key];
-        if (!Component) return null;
+        const element = elements[def.key];
+        if (!Component && element === undefined) return null;
         if (!visible && !previewMode) return null;
         return (
           <SectionFrame key={def.id} id={def.id} label={def.label} hidden={!visible}>
-            <Component />
+            {Component ? <Component /> : element}
           </SectionFrame>
         );
       })}
