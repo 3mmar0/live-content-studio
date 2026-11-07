@@ -3,7 +3,7 @@ import heroImg from "@/assets/h-library.jpg";
 
 export const libraryHero = section("hero", {
  label: "الواجهة الرئيسية",
- fields: [f.list("items", "الواجهة الرئيسية", "عنصر", [f.text("t", "العنوان"), f.textarea("d", "الوصف"), f.text("k", "النوع (guide / book / video)", { dir: "ltr" }), f.text("c", "الفئة")]), f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("subtitle", "النص التعريفي"), f.image("image", "الصورة")],
+ fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("subtitle", "النص التعريفي"), f.image("image", "الصورة")],
  defaults: {
   "items": [
     {
