@@ -10,33 +10,333 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BreedInnovationRouteImport } from './routes/breed-innovation'
+import { Route as ConsultingRouteImport } from './routes/consulting'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as EntrepreneurshipRouteImport } from './routes/entrepreneurship'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as LandscapeRouteImport } from './routes/landscape'
+import { Route as LibraryRouteImport } from './routes/library'
+import { Route as PoliciesRouteImport } from './routes/policies'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCoursesRouteImport } from './routes/admin.courses'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminPagesRouteImport } from './routes/admin.pages'
+import { Route as AdminRegistrationsRouteImport } from './routes/admin.registrations'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as CoursesIndexRouteImport } from './routes/courses.index'
+import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
+import { Route as CoursesAnimalLivestockRouteImport } from './routes/courses.animal-livestock'
+import { Route as AdminPagesPageSlugRouteImport } from './routes/admin.pages.$pageSlug'
+import { Route as CoursesCategorySpecialtyRouteImport } from './routes/courses.$category.$specialty'
+import { Route as CoursesAnimalLivestockIndexRouteImport } from './routes/courses.animal-livestock.index'
+import { Route as CoursesCategorySpecialtyCourseRouteImport } from './routes/courses.$category.$specialty.$course'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BreedInnovationRoute = BreedInnovationRouteImport.update({
+  id: '/breed-innovation',
+  path: '/breed-innovation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultingRoute = ConsultingRouteImport.update({
+  id: '/consulting',
+  path: '/consulting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrepreneurshipRoute = EntrepreneurshipRouteImport.update({
+  id: '/entrepreneurship',
+  path: '/entrepreneurship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandscapeRoute = LandscapeRouteImport.update({
+  id: '/landscape',
+  path: '/landscape',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCoursesRoute = AdminCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPagesRoute = AdminPagesRouteImport.update({
+  id: '/pages',
+  path: '/pages',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRegistrationsRoute = AdminRegistrationsRouteImport.update({
+  id: '/registrations',
+  path: '/registrations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const CoursesIndexRoute = CoursesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesSlugRoute = CoursesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesAnimalLivestockRoute = CoursesAnimalLivestockRouteImport.update({
+  id: '/animal-livestock',
+  path: '/animal-livestock',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const AdminPagesPageSlugRoute = AdminPagesPageSlugRouteImport.update({
+  id: '/$pageSlug',
+  path: '/$pageSlug',
+  getParentRoute: () => AdminPagesRoute,
+} as any)
+const CoursesCategorySpecialtyRoute =
+  CoursesCategorySpecialtyRouteImport.update({
+    id: '/$category/$specialty',
+    path: '/$category/$specialty',
+    getParentRoute: () => CoursesRoute,
+  } as any)
+const CoursesAnimalLivestockIndexRoute =
+  CoursesAnimalLivestockIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => CoursesAnimalLivestockRoute,
+  } as any)
+const CoursesCategorySpecialtyCourseRoute =
+  CoursesCategorySpecialtyCourseRouteImport.update({
+    id: '/$course',
+    path: '/$course',
+    getParentRoute: () => CoursesCategorySpecialtyRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/breed-innovation': typeof BreedInnovationRoute
+  '/consulting': typeof ConsultingRoute
+  '/contact': typeof ContactRoute
+  '/courses': typeof CoursesRouteWithChildren
+  '/entrepreneurship': typeof EntrepreneurshipRoute
+  '/faq': typeof FaqRoute
+  '/landscape': typeof LandscapeRoute
+  '/library': typeof LibraryRoute
+  '/policies': typeof PoliciesRoute
+  '/admin/courses': typeof AdminCoursesRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/pages': typeof AdminPagesRouteWithChildren
+  '/admin/registrations': typeof AdminRegistrationsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/animal-livestock': typeof CoursesAnimalLivestockRouteWithChildren
+  '/admin/': typeof AdminIndexRoute
+  '/courses/': typeof CoursesIndexRoute
+  '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
+  '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
+  '/courses/animal-livestock/': typeof CoursesAnimalLivestockIndexRoute
+  '/courses/$category/$specialty/$course': typeof CoursesCategorySpecialtyCourseRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/breed-innovation': typeof BreedInnovationRoute
+  '/consulting': typeof ConsultingRoute
+  '/contact': typeof ContactRoute
+  '/entrepreneurship': typeof EntrepreneurshipRoute
+  '/faq': typeof FaqRoute
+  '/landscape': typeof LandscapeRoute
+  '/library': typeof LibraryRoute
+  '/policies': typeof PoliciesRoute
+  '/admin/courses': typeof AdminCoursesRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/pages': typeof AdminPagesRouteWithChildren
+  '/admin/registrations': typeof AdminRegistrationsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/courses/$slug': typeof CoursesSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/courses': typeof CoursesIndexRoute
+  '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
+  '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
+  '/courses/animal-livestock': typeof CoursesAnimalLivestockIndexRoute
+  '/courses/$category/$specialty/$course': typeof CoursesCategorySpecialtyCourseRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/breed-innovation': typeof BreedInnovationRoute
+  '/consulting': typeof ConsultingRoute
+  '/contact': typeof ContactRoute
+  '/courses': typeof CoursesRouteWithChildren
+  '/entrepreneurship': typeof EntrepreneurshipRoute
+  '/faq': typeof FaqRoute
+  '/landscape': typeof LandscapeRoute
+  '/library': typeof LibraryRoute
+  '/policies': typeof PoliciesRoute
+  '/admin/courses': typeof AdminCoursesRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/pages': typeof AdminPagesRouteWithChildren
+  '/admin/registrations': typeof AdminRegistrationsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/animal-livestock': typeof CoursesAnimalLivestockRouteWithChildren
+  '/admin/': typeof AdminIndexRoute
+  '/courses/': typeof CoursesIndexRoute
+  '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
+  '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
+  '/courses/animal-livestock/': typeof CoursesAnimalLivestockIndexRoute
+  '/courses/$category/$specialty/$course': typeof CoursesCategorySpecialtyCourseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/breed-innovation'
+    | '/consulting'
+    | '/contact'
+    | '/courses'
+    | '/entrepreneurship'
+    | '/faq'
+    | '/landscape'
+    | '/library'
+    | '/policies'
+    | '/admin/courses'
+    | '/admin/login'
+    | '/admin/pages'
+    | '/admin/registrations'
+    | '/admin/settings'
+    | '/courses/$slug'
+    | '/courses/animal-livestock'
+    | '/admin/'
+    | '/courses/'
+    | '/admin/pages/$pageSlug'
+    | '/courses/$category/$specialty'
+    | '/courses/animal-livestock/'
+    | '/courses/$category/$specialty/$course'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/breed-innovation'
+    | '/consulting'
+    | '/contact'
+    | '/entrepreneurship'
+    | '/faq'
+    | '/landscape'
+    | '/library'
+    | '/policies'
+    | '/admin/courses'
+    | '/admin/login'
+    | '/admin/pages'
+    | '/admin/registrations'
+    | '/admin/settings'
+    | '/courses/$slug'
+    | '/admin'
+    | '/courses'
+    | '/admin/pages/$pageSlug'
+    | '/courses/$category/$specialty'
+    | '/courses/animal-livestock'
+    | '/courses/$category/$specialty/$course'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/breed-innovation'
+    | '/consulting'
+    | '/contact'
+    | '/courses'
+    | '/entrepreneurship'
+    | '/faq'
+    | '/landscape'
+    | '/library'
+    | '/policies'
+    | '/admin/courses'
+    | '/admin/login'
+    | '/admin/pages'
+    | '/admin/registrations'
+    | '/admin/settings'
+    | '/courses/$slug'
+    | '/courses/animal-livestock'
+    | '/admin/'
+    | '/courses/'
+    | '/admin/pages/$pageSlug'
+    | '/courses/$category/$specialty'
+    | '/courses/animal-livestock/'
+    | '/courses/$category/$specialty/$course'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  BreedInnovationRoute: typeof BreedInnovationRoute
+  ConsultingRoute: typeof ConsultingRoute
+  ContactRoute: typeof ContactRoute
+  CoursesRoute: typeof CoursesRouteWithChildren
+  EntrepreneurshipRoute: typeof EntrepreneurshipRoute
+  FaqRoute: typeof FaqRoute
+  LandscapeRoute: typeof LandscapeRoute
+  LibraryRoute: typeof LibraryRoute
+  PoliciesRoute: typeof PoliciesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +348,267 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/breed-innovation': {
+      id: '/breed-innovation'
+      path: '/breed-innovation'
+      fullPath: '/breed-innovation'
+      preLoaderRoute: typeof BreedInnovationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consulting': {
+      id: '/consulting'
+      path: '/consulting'
+      fullPath: '/consulting'
+      preLoaderRoute: typeof ConsultingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrepreneurship': {
+      id: '/entrepreneurship'
+      path: '/entrepreneurship'
+      fullPath: '/entrepreneurship'
+      preLoaderRoute: typeof EntrepreneurshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landscape': {
+      id: '/landscape'
+      path: '/landscape'
+      fullPath: '/landscape'
+      preLoaderRoute: typeof LandscapeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/courses': {
+      id: '/admin/courses'
+      path: '/courses'
+      fullPath: '/admin/courses'
+      preLoaderRoute: typeof AdminCoursesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pages': {
+      id: '/admin/pages'
+      path: '/pages'
+      fullPath: '/admin/pages'
+      preLoaderRoute: typeof AdminPagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/registrations': {
+      id: '/admin/registrations'
+      path: '/registrations'
+      fullPath: '/admin/registrations'
+      preLoaderRoute: typeof AdminRegistrationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/courses/': {
+      id: '/courses/'
+      path: '/'
+      fullPath: '/courses/'
+      preLoaderRoute: typeof CoursesIndexRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/$slug': {
+      id: '/courses/$slug'
+      path: '/$slug'
+      fullPath: '/courses/$slug'
+      preLoaderRoute: typeof CoursesSlugRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/animal-livestock': {
+      id: '/courses/animal-livestock'
+      path: '/animal-livestock'
+      fullPath: '/courses/animal-livestock'
+      preLoaderRoute: typeof CoursesAnimalLivestockRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/admin/pages/$pageSlug': {
+      id: '/admin/pages/$pageSlug'
+      path: '/$pageSlug'
+      fullPath: '/admin/pages/$pageSlug'
+      preLoaderRoute: typeof AdminPagesPageSlugRouteImport
+      parentRoute: typeof AdminPagesRoute
+    }
+    '/courses/$category/$specialty': {
+      id: '/courses/$category/$specialty'
+      path: '/$category/$specialty'
+      fullPath: '/courses/$category/$specialty'
+      preLoaderRoute: typeof CoursesCategorySpecialtyRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/animal-livestock/': {
+      id: '/courses/animal-livestock/'
+      path: '/'
+      fullPath: '/courses/animal-livestock/'
+      preLoaderRoute: typeof CoursesAnimalLivestockIndexRouteImport
+      parentRoute: typeof CoursesAnimalLivestockRoute
+    }
+    '/courses/$category/$specialty/$course': {
+      id: '/courses/$category/$specialty/$course'
+      path: '/$course'
+      fullPath: '/courses/$category/$specialty/$course'
+      preLoaderRoute: typeof CoursesCategorySpecialtyCourseRouteImport
+      parentRoute: typeof CoursesCategorySpecialtyRoute
+    }
   }
 }
 
+interface AdminPagesRouteChildren {
+  AdminPagesPageSlugRoute: typeof AdminPagesPageSlugRoute
+}
+
+const AdminPagesRouteChildren: AdminPagesRouteChildren = {
+  AdminPagesPageSlugRoute: AdminPagesPageSlugRoute,
+}
+
+const AdminPagesRouteWithChildren = AdminPagesRoute._addFileChildren(
+  AdminPagesRouteChildren,
+)
+
+interface AdminRouteChildren {
+  AdminCoursesRoute: typeof AdminCoursesRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminPagesRoute: typeof AdminPagesRouteWithChildren
+  AdminRegistrationsRoute: typeof AdminRegistrationsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminCoursesRoute: AdminCoursesRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminPagesRoute: AdminPagesRouteWithChildren,
+  AdminRegistrationsRoute: AdminRegistrationsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface CoursesAnimalLivestockRouteChildren {
+  CoursesAnimalLivestockIndexRoute: typeof CoursesAnimalLivestockIndexRoute
+}
+
+const CoursesAnimalLivestockRouteChildren: CoursesAnimalLivestockRouteChildren =
+  {
+    CoursesAnimalLivestockIndexRoute: CoursesAnimalLivestockIndexRoute,
+  }
+
+const CoursesAnimalLivestockRouteWithChildren =
+  CoursesAnimalLivestockRoute._addFileChildren(
+    CoursesAnimalLivestockRouteChildren,
+  )
+
+interface CoursesCategorySpecialtyRouteChildren {
+  CoursesCategorySpecialtyCourseRoute: typeof CoursesCategorySpecialtyCourseRoute
+}
+
+const CoursesCategorySpecialtyRouteChildren: CoursesCategorySpecialtyRouteChildren =
+  {
+    CoursesCategorySpecialtyCourseRoute: CoursesCategorySpecialtyCourseRoute,
+  }
+
+const CoursesCategorySpecialtyRouteWithChildren =
+  CoursesCategorySpecialtyRoute._addFileChildren(
+    CoursesCategorySpecialtyRouteChildren,
+  )
+
+interface CoursesRouteChildren {
+  CoursesSlugRoute: typeof CoursesSlugRoute
+  CoursesAnimalLivestockRoute: typeof CoursesAnimalLivestockRouteWithChildren
+  CoursesIndexRoute: typeof CoursesIndexRoute
+  CoursesCategorySpecialtyRoute: typeof CoursesCategorySpecialtyRouteWithChildren
+}
+
+const CoursesRouteChildren: CoursesRouteChildren = {
+  CoursesSlugRoute: CoursesSlugRoute,
+  CoursesAnimalLivestockRoute: CoursesAnimalLivestockRouteWithChildren,
+  CoursesIndexRoute: CoursesIndexRoute,
+  CoursesCategorySpecialtyRoute: CoursesCategorySpecialtyRouteWithChildren,
+}
+
+const CoursesRouteWithChildren =
+  CoursesRoute._addFileChildren(CoursesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
+  BreedInnovationRoute: BreedInnovationRoute,
+  ConsultingRoute: ConsultingRoute,
+  ContactRoute: ContactRoute,
+  CoursesRoute: CoursesRouteWithChildren,
+  EntrepreneurshipRoute: EntrepreneurshipRoute,
+  FaqRoute: FaqRoute,
+  LandscapeRoute: LandscapeRoute,
+  LibraryRoute: LibraryRoute,
+  PoliciesRoute: PoliciesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
