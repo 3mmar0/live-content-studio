@@ -15,7 +15,7 @@ export const contactHero = section("hero", {
 
 export const contactContact = section("contact", {
  label: "التواصل والنموذج",
- fields: [f.text("text0", "text0"), f.text("text1", "text1"), f.text("text2", "text2"), f.text("text3", "text3"), f.text("text4", "text4"), f.text("text5", "text5"), f.text("text6", "text6"), f.text("text7", "text7"), f.text("text8", "text8"), f.text("text9", "text9"), f.text("text10", "text10"), f.text("text11", "text11"), f.text("text12", "text12")],
+ fields: [f.text("text0", "عنوان البريد"), f.text("text1", "البريد الإلكتروني"), f.text("text2", "عنوان الهاتف"), f.text("text3", "رقم الهاتف"), f.text("text4", "عنوان رسالة النجاح"), f.text("text5", "نص رسالة النجاح"), f.text("text6", "عنوان خانة نوع الطلب"), f.text("text7", "خيار ١"), f.text("text8", "خيار ٢"), f.text("text9", "خيار ٣"), f.text("text10", "خيار ٤"), f.text("text11", "خيار ٥"), f.text("text12", "نص زر الإرسال")],
  defaults: {
   "text0": "البريد الإلكتروني",
   "text1": "info@yourcompany.example.com",

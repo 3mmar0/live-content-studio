@@ -3,7 +3,7 @@ import heroImg from "@/assets/h-consulting.jpg";
 
 export const consultingHero = section("hero", {
  label: "الواجهة الرئيسية",
- fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("subtitle", "النص التعريفي"), f.image("image", "الصورة"), f.text("text4", "text4"), f.url("ctaHref", "رابط الزر")],
+ fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.textarea("subtitle", "النص التعريفي"), f.image("image", "الصورة"), f.text("text4", "نص الزر"), f.url("ctaHref", "رابط الزر")],
  defaults: {
   "eyebrow": "خدمات الاستشارات التخصصية",
   "title": "استشارات مقدمة من كبار الخبراء",

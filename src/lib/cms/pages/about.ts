@@ -16,7 +16,7 @@ export const aboutHero = section("hero", {
 
 export const aboutVision = section("vision", {
  label: "الرؤية والرسالة",
- fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.text("text2", "text2"), f.textarea("text3", "text3"), f.text("text4", "text4"), f.textarea("text5", "text5"), f.text("imageAlt", "وصف الصورة"), f.image("image", "الصورة")],
+ fields: [f.text("eyebrow", "العنوان التمهيدي"), f.text("title", "العنوان"), f.text("text2", "عنوان الرؤية"), f.textarea("text3", "نص الرؤية"), f.text("text4", "عنوان الرسالة"), f.textarea("text5", "نص الرسالة"), f.text("imageAlt", "وصف الصورة"), f.image("image", "الصورة")],
  defaults: {
   "eyebrow": "طموحنا ورسالتنا",
   "title": "رؤيتنا ورسالتنا في Solala",
