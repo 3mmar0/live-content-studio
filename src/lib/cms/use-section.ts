@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useCmsOptional } from "./CmsProvider";
-import { CONTENT_VERSION, resolveContent, type PageDef, type SectionContent, type SectionDef } from "./schema";
+import { CONTENT_VERSION, resolveContent, type PageDef, type Resolved, type SectionContent, type SectionDef } from "./schema";
 import type { PreviewSectionState } from "./preview";
 import type { CmsPage, CmsSection, CmsStore } from "./types";
 
@@ -31,7 +31,7 @@ export function savedSectionStates(store: CmsStore, page: PageDef): Record<strin
 }
 
 /** Resolved content for a section: live preview draft → saved content → defaults. */
-export function useSectionContent<T extends SectionContent>(def: SectionDef<T>): T {
+export function useSectionContent<T extends SectionContent>(def: SectionDef<T>): Resolved<T> {
   const cms = useCmsOptional();
   const draft = cms?.previewSections?.[def.id];
   const store = cms?.store;

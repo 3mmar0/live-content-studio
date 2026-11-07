@@ -36,6 +36,9 @@ export type ListItem = Record<string, string>;
 export type SectionValue = string | ListItem[];
 export type SectionContent = Record<string, SectionValue>;
 
+/** Content as read by page components: list items carry a stable `_id`. */
+export type Resolved<T> = { [K in keyof T]: T[K] extends (infer I)[] ? (I & { _id?: string })[] : T[K] };
+
 export type LegacyPageField = "heroTitle" | "heroSubtitle";
 
 export type SectionDef<T extends SectionContent = SectionContent> = {
@@ -152,7 +155,7 @@ export function resolveContent<T extends SectionContent>(
   def: SectionDef<T>,
   stored?: Record<string, unknown> | null,
   pageRow?: Partial<Record<LegacyPageField, string>> | null,
-): T {
+): Resolved<T> {
   const out: SectionContent = { ...def.defaults };
 
   if (pageRow && def.legacyPageFields) {
@@ -193,7 +196,7 @@ export function resolveContent<T extends SectionContent>(
     }
   }
 
-  return mapStrings(out, decodeAsset) as T;
+  return mapStrings(out, decodeAsset) as Resolved<T>;
 }
 
 /** Prepare editor content for saving: encode bundled asset URLs and tag the version. */
