@@ -72,16 +72,15 @@ export async function fetchCmsStore(): Promise<CmsStore> {
   }
 }
 
+/** Save site-wide settings. Page content is saved per page with savePageContent. */
 export async function persistCmsStore(store: CmsStore): Promise<{ ok: true; mode: "server" }> {
   await adminApi("/admin/settings", { method: "PUT", body: JSON.stringify(store.settings) });
-  await Promise.all(
-    store.pages.filter((page) => page.id).map((page) => adminApi(`/admin/pages/${page.id}`, { method: "PUT", body: JSON.stringify(page) })),
-  );
-  await Promise.all(
-    store.sections.filter((section) => typeof section.id === "number").map((section) => adminApi(`/admin/sections/${section.id}`, { method: "PUT", body: JSON.stringify({ visible: section.visible, content: { title: section.title, subtitle: section.subtitle, body: section.body, items: section.items } }) })),
-  );
   setLocalCmsStore(store);
   return { ok: true, mode: "server" };
+}
+
+export async function updatePageRow(page: { id: number; title: string; description: string; heroTitle: string; heroSubtitle: string; published: boolean }) {
+  return adminApi(`/admin/pages/${page.id}`, { method: "PUT", body: JSON.stringify(page) });
 }
 
 export async function loginAdmin(email: string, password: string) {

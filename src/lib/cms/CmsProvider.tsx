@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import { CMS_SEED } from "./seed";
 import { fetchCmsStore, persistCmsStore } from "./client-store";
 import { isPreviewFrame, isPreviewMessage, postToParent, type PreviewSectionState } from "./preview";
-import type { CmsPage, CmsSection, CmsStore, SiteSettings } from "./types";
+import type { CmsStore, SiteSettings } from "./types";
 
 type CmsContextValue = {
   store: CmsStore;
@@ -16,8 +16,6 @@ type CmsContextValue = {
   refresh: () => Promise<void>;
   saveStore: (next: CmsStore) => Promise<void>;
   updateSettings: (settings: SiteSettings) => Promise<void>;
-  updateSection: (section: CmsSection) => Promise<void>;
-  updatePage: (page: CmsPage, previousSlug?: string) => Promise<void>;
 };
 
 const CmsContext = createContext<CmsContextValue | null>(null);
@@ -98,19 +96,6 @@ export function CmsProvider({ children }: { children: ReactNode }) {
       saveStore,
       updateSettings: async (settings) => {
         await saveStore({ ...store, settings });
-      },
-      updateSection: async (section) => {
-        await saveStore({
-          ...store,
-          sections: store.sections.map((s) => (s.id === section.id ? section : s)),
-        });
-      },
-      updatePage: async (page, previousSlug?: string) => {
-        const key = previousSlug ?? page.slug;
-        await saveStore({
-          ...store,
-          pages: store.pages.map((p) => (p.slug === key ? page : p)),
-        });
       },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
