@@ -25,9 +25,9 @@ export type ListField = {
   /** Singular label for one item, e.g. "خبير". */
   itemLabel: string;
   /** Field shown as the item title in the collapsed list. */
-  titleField?: string;
+  titleField?: string | undefined;
   fields: ScalarField[];
-  hint?: string;
+  hint?: string | undefined;
 };
 
 export type FieldDef = ScalarField | ListField;
@@ -166,7 +166,7 @@ export function resolveContent<T extends SectionContent>(
   }
 
   if (stored && typeof stored === "object") {
-    const strict = stored._v === CONTENT_VERSION;
+    const strict = stored["_v"] === CONTENT_VERSION;
     for (const field of def.fields) {
       const v = stored[field.name];
       if (field.type === "list") {
@@ -174,7 +174,7 @@ export function resolveContent<T extends SectionContent>(
           const blank = blankItem(field);
           out[field.name] = v.map((item, i) => {
             const src = item && typeof item === "object" ? (item as Record<string, unknown>) : {};
-            const merged: ListItem = { ...blank, _id: String(src._id ?? src.id ?? `i${i}`) };
+            const merged: ListItem = { ...blank, _id: String(src["_id"] ?? src["id"] ?? `i${i}`) };
             for (const f of field.fields) {
               const iv = src[f.name];
               if (typeof iv === "string" || typeof iv === "number") merged[f.name] = String(iv);
@@ -192,7 +192,7 @@ export function resolveContent<T extends SectionContent>(
   for (const field of def.fields) {
     const list = out[field.name];
     if (field.type === "list" && Array.isArray(list)) {
-      out[field.name] = list.map((item, i) => (item._id ? item : { ...item, _id: `d${i}` }));
+      out[field.name] = list.map((item, i) => (item["_id"] ? item : { ...item, _id: `d${i}` }));
     }
   }
 

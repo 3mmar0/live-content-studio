@@ -28,6 +28,6 @@ export function isPreviewMessage(data: unknown): data is PreviewMessage {
   return Boolean(data && typeof data === "object" && (data as { source?: string }).source === "solala-cms");
 }
 
-export function postToParent(message: Omit<Extract<PreviewMessage, { type: "ready" | "select" }>, "source">) {
+export function postToParent(message: { type: "ready"; path: string } | { type: "select"; id: string }) {
   window.parent.postMessage({ source: "solala-cms", ...message }, window.location.origin);
 }

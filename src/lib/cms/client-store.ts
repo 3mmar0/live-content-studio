@@ -3,7 +3,7 @@ import type { CmsStore } from "./types";
 
 const LS_KEY = "solala-cms-store-v2";
 const TOKEN_KEY = "solala-admin-token";
-const API_BASE = (import.meta.env.VITE_CMS_API_BASE_URL || "https://backend.solalaa.com/api").replace(/\/$/, "");
+const API_BASE = (import.meta.env["VITE_CMS_API_BASE_URL"] || "https://backend.solalaa.com/api").replace(/\/$/, "");
 
 export function getLocalCmsStore(): CmsStore {
   if (typeof window === "undefined") return CMS_SEED;
