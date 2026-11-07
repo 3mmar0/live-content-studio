@@ -24,14 +24,13 @@ import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminCoursesRouteImport } from './routes/admin.courses'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
-import { Route as AdminPagesRouteImport } from './routes/admin.pages'
 import { Route as AdminRegistrationsRouteImport } from './routes/admin.registrations'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
 import { Route as CoursesAnimalLivestockRouteImport } from './routes/courses.animal-livestock'
+import { Route as AdminPagesIndexRouteImport } from './routes/admin.pages.index'
 import { Route as AdminPagesPageKeyRouteImport } from './routes/admin.pages.$pageKey'
-import { Route as AdminPagesPageSlugRouteImport } from './routes/admin.pages.$pageSlug'
 import { Route as CoursesCategorySpecialtyRouteImport } from './routes/courses.$category.$specialty'
 import { Route as CoursesAnimalLivestockIndexRouteImport } from './routes/courses.animal-livestock.index'
 import { Route as CoursesCategorySpecialtyCourseRouteImport } from './routes/courses.$category.$specialty.$course'
@@ -111,11 +110,6 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminPagesRoute = AdminPagesRouteImport.update({
-  id: '/pages',
-  path: '/pages',
-  getParentRoute: () => AdminRoute,
-} as any)
 const AdminRegistrationsRoute = AdminRegistrationsRouteImport.update({
   id: '/registrations',
   path: '/registrations',
@@ -141,15 +135,15 @@ const CoursesAnimalLivestockRoute = CoursesAnimalLivestockRouteImport.update({
   path: '/animal-livestock',
   getParentRoute: () => CoursesRoute,
 } as any)
-const AdminPagesPageKeyRoute = AdminPagesPageKeyRouteImport.update({
-  id: '/$pageKey',
-  path: '/$pageKey',
-  getParentRoute: () => AdminPagesRoute,
+const AdminPagesIndexRoute = AdminPagesIndexRouteImport.update({
+  id: '/pages/',
+  path: '/pages/',
+  getParentRoute: () => AdminRoute,
 } as any)
-const AdminPagesPageSlugRoute = AdminPagesPageSlugRouteImport.update({
-  id: '/$pageSlug',
-  path: '/$pageSlug',
-  getParentRoute: () => AdminPagesRoute,
+const AdminPagesPageKeyRoute = AdminPagesPageKeyRouteImport.update({
+  id: '/pages/$pageKey',
+  path: '/pages/$pageKey',
+  getParentRoute: () => AdminRoute,
 } as any)
 const CoursesCategorySpecialtyRoute =
   CoursesCategorySpecialtyRouteImport.update({
@@ -185,7 +179,6 @@ export interface FileRoutesByFullPath {
   '/policies': typeof PoliciesRoute
   '/admin/courses': typeof AdminCoursesRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/pages': typeof AdminPagesRouteWithChildren
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/courses/$slug': typeof CoursesSlugRoute
@@ -193,8 +186,8 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/courses/': typeof CoursesIndexRoute
   '/admin/pages/$pageKey': typeof AdminPagesPageKeyRoute
-  '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
   '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
+  '/admin/pages/': typeof AdminPagesIndexRoute
   '/courses/animal-livestock/': typeof CoursesAnimalLivestockIndexRoute
   '/courses/$category/$specialty/$course': typeof CoursesCategorySpecialtyCourseRoute
 }
@@ -211,15 +204,14 @@ export interface FileRoutesByTo {
   '/policies': typeof PoliciesRoute
   '/admin/courses': typeof AdminCoursesRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/pages': typeof AdminPagesRouteWithChildren
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/admin': typeof AdminIndexRoute
   '/courses': typeof CoursesIndexRoute
   '/admin/pages/$pageKey': typeof AdminPagesPageKeyRoute
-  '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
   '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
+  '/admin/pages': typeof AdminPagesIndexRoute
   '/courses/animal-livestock': typeof CoursesAnimalLivestockIndexRoute
   '/courses/$category/$specialty/$course': typeof CoursesCategorySpecialtyCourseRoute
 }
@@ -239,7 +231,6 @@ export interface FileRoutesById {
   '/policies': typeof PoliciesRoute
   '/admin/courses': typeof AdminCoursesRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/pages': typeof AdminPagesRouteWithChildren
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/courses/$slug': typeof CoursesSlugRoute
@@ -247,8 +238,8 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/courses/': typeof CoursesIndexRoute
   '/admin/pages/$pageKey': typeof AdminPagesPageKeyRoute
-  '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
   '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
+  '/admin/pages/': typeof AdminPagesIndexRoute
   '/courses/animal-livestock/': typeof CoursesAnimalLivestockIndexRoute
   '/courses/$category/$specialty/$course': typeof CoursesCategorySpecialtyCourseRoute
 }
@@ -269,7 +260,6 @@ export interface FileRouteTypes {
     | '/policies'
     | '/admin/courses'
     | '/admin/login'
-    | '/admin/pages'
     | '/admin/registrations'
     | '/admin/settings'
     | '/courses/$slug'
@@ -277,8 +267,8 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/courses/'
     | '/admin/pages/$pageKey'
-    | '/admin/pages/$pageSlug'
     | '/courses/$category/$specialty'
+    | '/admin/pages/'
     | '/courses/animal-livestock/'
     | '/courses/$category/$specialty/$course'
   fileRoutesByTo: FileRoutesByTo
@@ -295,15 +285,14 @@ export interface FileRouteTypes {
     | '/policies'
     | '/admin/courses'
     | '/admin/login'
-    | '/admin/pages'
     | '/admin/registrations'
     | '/admin/settings'
     | '/courses/$slug'
     | '/admin'
     | '/courses'
     | '/admin/pages/$pageKey'
-    | '/admin/pages/$pageSlug'
     | '/courses/$category/$specialty'
+    | '/admin/pages'
     | '/courses/animal-livestock'
     | '/courses/$category/$specialty/$course'
   id:
@@ -322,7 +311,6 @@ export interface FileRouteTypes {
     | '/policies'
     | '/admin/courses'
     | '/admin/login'
-    | '/admin/pages'
     | '/admin/registrations'
     | '/admin/settings'
     | '/courses/$slug'
@@ -330,8 +318,8 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/courses/'
     | '/admin/pages/$pageKey'
-    | '/admin/pages/$pageSlug'
     | '/courses/$category/$specialty'
+    | '/admin/pages/'
     | '/courses/animal-livestock/'
     | '/courses/$category/$specialty/$course'
   fileRoutesById: FileRoutesById
@@ -458,13 +446,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/pages': {
-      id: '/admin/pages'
-      path: '/pages'
-      fullPath: '/admin/pages'
-      preLoaderRoute: typeof AdminPagesRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/registrations': {
       id: '/admin/registrations'
       path: '/registrations'
@@ -500,19 +481,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesAnimalLivestockRouteImport
       parentRoute: typeof CoursesRoute
     }
+    '/admin/pages/': {
+      id: '/admin/pages/'
+      path: '/pages'
+      fullPath: '/admin/pages/'
+      preLoaderRoute: typeof AdminPagesIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/pages/$pageKey': {
       id: '/admin/pages/$pageKey'
-      path: '/$pageKey'
+      path: '/pages/$pageKey'
       fullPath: '/admin/pages/$pageKey'
       preLoaderRoute: typeof AdminPagesPageKeyRouteImport
-      parentRoute: typeof AdminPagesRoute
-    }
-    '/admin/pages/$pageSlug': {
-      id: '/admin/pages/$pageSlug'
-      path: '/$pageSlug'
-      fullPath: '/admin/pages/$pageSlug'
-      preLoaderRoute: typeof AdminPagesPageSlugRouteImport
-      parentRoute: typeof AdminPagesRoute
+      parentRoute: typeof AdminRoute
     }
     '/courses/$category/$specialty': {
       id: '/courses/$category/$specialty'
@@ -538,36 +519,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AdminPagesRouteChildren {
-  AdminPagesPageKeyRoute: typeof AdminPagesPageKeyRoute
-  AdminPagesPageSlugRoute: typeof AdminPagesPageSlugRoute
-}
-
-const AdminPagesRouteChildren: AdminPagesRouteChildren = {
-  AdminPagesPageKeyRoute: AdminPagesPageKeyRoute,
-  AdminPagesPageSlugRoute: AdminPagesPageSlugRoute,
-}
-
-const AdminPagesRouteWithChildren = AdminPagesRoute._addFileChildren(
-  AdminPagesRouteChildren,
-)
-
 interface AdminRouteChildren {
   AdminCoursesRoute: typeof AdminCoursesRoute
   AdminLoginRoute: typeof AdminLoginRoute
-  AdminPagesRoute: typeof AdminPagesRouteWithChildren
   AdminRegistrationsRoute: typeof AdminRegistrationsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminPagesPageKeyRoute: typeof AdminPagesPageKeyRoute
+  AdminPagesIndexRoute: typeof AdminPagesIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminCoursesRoute: AdminCoursesRoute,
   AdminLoginRoute: AdminLoginRoute,
-  AdminPagesRoute: AdminPagesRouteWithChildren,
   AdminRegistrationsRoute: AdminRegistrationsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminIndexRoute: AdminIndexRoute,
+  AdminPagesPageKeyRoute: AdminPagesPageKeyRoute,
+  AdminPagesIndexRoute: AdminPagesIndexRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)

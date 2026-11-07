@@ -11,21 +11,23 @@ import {
 import type { ReactNode } from "react";
 import { logoutAdmin } from "@/lib/cms/client-store";
 import { useCms } from "@/lib/cms/CmsProvider";
+import { Toaster } from "@/components/ui/sonner";
 
-const NAV = [
+const NAV: { to: "/admin" | "/admin/pages" | "/admin/courses" | "/admin/registrations" | "/admin/settings"; label: string; icon: typeof FileText; exact?: boolean }[] = [
   { to: "/admin", label: "نظرة عامة", icon: LayoutDashboard, exact: true },
-  { to: "/admin/settings", label: "إعدادات الموقع", icon: Settings2 },
-  { to: "/admin/pages", label: "الصفحات", icon: FileText },
-  { to: "/admin/courses", label: "كتالوج الدورات", icon: GraduationCap },
+  { to: "/admin/pages", label: "صفحات الموقع", icon: FileText },
+  { to: "/admin/courses", label: "الدورات", icon: GraduationCap },
   { to: "/admin/registrations", label: "التسجيلات", icon: ClipboardList },
-] as const;
+  { to: "/admin/settings", label: "إعدادات الموقع", icon: Settings2 },
+];
 
-export function AdminShell({ children, title, desc }: { children: ReactNode; title: string; desc?: string }) {
+export function AdminShell({ children, title, desc, actions }: { children: ReactNode; title: string; desc?: string; actions?: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { saving, lastSaveMode } = useCms();
 
   return (
-    <div className="admin-shell min-h-screen bg-[oklch(0.97_0.01_95)] text-forest">
+    <div className="admin-shell min-h-screen bg-muted text-forest">
+      <Toaster position="top-center" richColors />
       <div className="mx-auto grid min-h-screen max-w-[1400px] lg:grid-cols-[1fr_260px]">
         <main className="order-2 px-4 py-6 sm:px-8 lg:order-1 lg:py-10">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-forest/10 pb-6">
@@ -35,11 +37,9 @@ export function AdminShell({ children, title, desc }: { children: ReactNode; tit
               {desc && <p className="mt-2 max-w-2xl text-sm leading-7 text-muted-foreground">{desc}</p>}
             </div>
             <div className="flex items-center gap-3 text-xs text-muted-foreground">
+              {actions}
               {saving ? <span className="text-primary">جاري الحفظ...</span> : null}
               {lastSaveMode === "server" && <span className="rounded-full bg-secondary px-3 py-1 text-primary">محفوظ على الخادم</span>}
-              {lastSaveMode === "local" && (
-                <span className="rounded-full bg-gold/20 px-3 py-1 text-gold-dark">محفوظ محلياً (الاستضافة ثابتة)</span>
-              )}
             </div>
           </div>
           {children}
