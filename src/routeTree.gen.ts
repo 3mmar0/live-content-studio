@@ -30,6 +30,7 @@ import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
 import { Route as CoursesAnimalLivestockRouteImport } from './routes/courses.animal-livestock'
+import { Route as AdminPagesPageKeyRouteImport } from './routes/admin.pages.$pageKey'
 import { Route as AdminPagesPageSlugRouteImport } from './routes/admin.pages.$pageSlug'
 import { Route as CoursesCategorySpecialtyRouteImport } from './routes/courses.$category.$specialty'
 import { Route as CoursesAnimalLivestockIndexRouteImport } from './routes/courses.animal-livestock.index'
@@ -140,6 +141,11 @@ const CoursesAnimalLivestockRoute = CoursesAnimalLivestockRouteImport.update({
   path: '/animal-livestock',
   getParentRoute: () => CoursesRoute,
 } as any)
+const AdminPagesPageKeyRoute = AdminPagesPageKeyRouteImport.update({
+  id: '/$pageKey',
+  path: '/$pageKey',
+  getParentRoute: () => AdminPagesRoute,
+} as any)
 const AdminPagesPageSlugRoute = AdminPagesPageSlugRouteImport.update({
   id: '/$pageSlug',
   path: '/$pageSlug',
@@ -186,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/courses/animal-livestock': typeof CoursesAnimalLivestockRouteWithChildren
   '/admin/': typeof AdminIndexRoute
   '/courses/': typeof CoursesIndexRoute
+  '/admin/pages/$pageKey': typeof AdminPagesPageKeyRoute
   '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
   '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
   '/courses/animal-livestock/': typeof CoursesAnimalLivestockIndexRoute
@@ -210,6 +217,7 @@ export interface FileRoutesByTo {
   '/courses/$slug': typeof CoursesSlugRoute
   '/admin': typeof AdminIndexRoute
   '/courses': typeof CoursesIndexRoute
+  '/admin/pages/$pageKey': typeof AdminPagesPageKeyRoute
   '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
   '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
   '/courses/animal-livestock': typeof CoursesAnimalLivestockIndexRoute
@@ -238,6 +246,7 @@ export interface FileRoutesById {
   '/courses/animal-livestock': typeof CoursesAnimalLivestockRouteWithChildren
   '/admin/': typeof AdminIndexRoute
   '/courses/': typeof CoursesIndexRoute
+  '/admin/pages/$pageKey': typeof AdminPagesPageKeyRoute
   '/admin/pages/$pageSlug': typeof AdminPagesPageSlugRoute
   '/courses/$category/$specialty': typeof CoursesCategorySpecialtyRouteWithChildren
   '/courses/animal-livestock/': typeof CoursesAnimalLivestockIndexRoute
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/courses/animal-livestock'
     | '/admin/'
     | '/courses/'
+    | '/admin/pages/$pageKey'
     | '/admin/pages/$pageSlug'
     | '/courses/$category/$specialty'
     | '/courses/animal-livestock/'
@@ -291,6 +301,7 @@ export interface FileRouteTypes {
     | '/courses/$slug'
     | '/admin'
     | '/courses'
+    | '/admin/pages/$pageKey'
     | '/admin/pages/$pageSlug'
     | '/courses/$category/$specialty'
     | '/courses/animal-livestock'
@@ -318,6 +329,7 @@ export interface FileRouteTypes {
     | '/courses/animal-livestock'
     | '/admin/'
     | '/courses/'
+    | '/admin/pages/$pageKey'
     | '/admin/pages/$pageSlug'
     | '/courses/$category/$specialty'
     | '/courses/animal-livestock/'
@@ -488,6 +500,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesAnimalLivestockRouteImport
       parentRoute: typeof CoursesRoute
     }
+    '/admin/pages/$pageKey': {
+      id: '/admin/pages/$pageKey'
+      path: '/$pageKey'
+      fullPath: '/admin/pages/$pageKey'
+      preLoaderRoute: typeof AdminPagesPageKeyRouteImport
+      parentRoute: typeof AdminPagesRoute
+    }
     '/admin/pages/$pageSlug': {
       id: '/admin/pages/$pageSlug'
       path: '/$pageSlug'
@@ -520,10 +539,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminPagesRouteChildren {
+  AdminPagesPageKeyRoute: typeof AdminPagesPageKeyRoute
   AdminPagesPageSlugRoute: typeof AdminPagesPageSlugRoute
 }
 
 const AdminPagesRouteChildren: AdminPagesRouteChildren = {
+  AdminPagesPageKeyRoute: AdminPagesPageKeyRoute,
   AdminPagesPageSlugRoute: AdminPagesPageSlugRoute,
 }
 
