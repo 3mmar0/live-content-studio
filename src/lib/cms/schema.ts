@@ -82,6 +82,24 @@ export function definePage(input: {
   return page;
 }
 
+type FieldExtra = Partial<Pick<ScalarField, "hint" | "dir">>;
+
+/** Field shorthands for section definitions. */
+export const f = {
+  text: (name: string, label: string, extra: FieldExtra = {}): ScalarField => ({ name, label, type: "text", ...extra }),
+  textarea: (name: string, label: string, extra: FieldExtra = {}): ScalarField => ({ name, label, type: "textarea", ...extra }),
+  image: (name: string, label: string, extra: FieldExtra = {}): ScalarField => ({ name, label, type: "image", ...extra }),
+  url: (name: string, label: string, extra: FieldExtra = {}): ScalarField => ({ name, label, type: "url", dir: "ltr", ...extra }),
+  icon: (name = "icon", label = "الأيقونة"): ScalarField => ({ name, label, type: "icon" }),
+  list: (
+    name: string,
+    label: string,
+    itemLabel: string,
+    fields: ScalarField[],
+    extra: { titleField?: string; hint?: string } = {},
+  ): ListField => ({ name, label, type: "list", itemLabel, fields, titleField: extra.titleField ?? fields.find((x) => x.type === "text")?.name, hint: extra.hint }),
+};
+
 export function blankItem(field: ListField): ListItem {
   return Object.fromEntries(field.fields.map((f) => [f.name, ""]));
 }
